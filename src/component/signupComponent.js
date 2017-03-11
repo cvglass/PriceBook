@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, CardSection, Input, Card } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
