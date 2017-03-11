@@ -9,6 +9,7 @@ import rootReducer from './reducers'
 
 import User from './component/userComponent';
 import Signup from './component/signupComponent';
+import Login from './component/loginComponent'
 
 export default class App extends Component {
   componentDidMount() {
@@ -26,8 +27,9 @@ export default class App extends Component {
       <Provider store={createStore(rootReducer, applyMiddleware(ReduxThunk))}>
         <Router>
           <Scene key="root">
-            <Scene key="signup" component={Signup} title="Signup" initial={true} />
+            <Scene key="signup" component={Signup} title="Signup" />
             <Scene key="user" component={User} title="User" />
+            <Scene key="login" title="Login" component={Login} initial={true}/>
           </Scene>
         </Router>
       </Provider>
