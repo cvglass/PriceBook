@@ -7,7 +7,8 @@ import firebase from 'firebase';
 
 import rootReducer from './reducers'
 
-import User from './component/userComponent'
+import User from './component/userComponent';
+import Signup from './component/signupComponent';
 
 export default class App extends Component {
   componentDidMount() {
@@ -25,7 +26,8 @@ export default class App extends Component {
       <Provider store={createStore(rootReducer, applyMiddleware(ReduxThunk))}>
         <Router>
           <Scene key="root">
-            <Scene key="user" component={User} title="User" initial={true} />
+            <Scene key="signup" component={Signup} title="Signup" initial={true} />
+            <Scene key="user" component={User} title="User" />
           </Scene>
         </Router>
       </Provider>
