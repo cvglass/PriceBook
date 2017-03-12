@@ -9,7 +9,10 @@ import rootReducer from './reducers'
 
 import User from './component/userComponent';
 import Signup from './component/signupComponent';
-import Login from './component/loginComponent'
+import Login from './component/loginComponent';
+import AddProduct from './component/addProductComponent'
+import AddStore from './component/addStoreComponent';
+import Stores from './component/storesComponent'
 
 export default class App extends Component {
   componentDidMount() {
@@ -29,7 +32,10 @@ export default class App extends Component {
           <Scene key="root">
             <Scene key="signup" component={Signup} title="Signup" />
             <Scene key="user" component={User} title="User" />
-            <Scene key="login" title="Login" component={Login} initial={true}/>
+            <Scene key="login" title="Login" component={Login} initial={true} />
+            <Scene key="addProduct" title="Add a product" component={AddProduct} />
+            <Scene key="addStore" title="Add a store" component={AddStore} />
+            <Scene key="stores" title="Your Stores" component={Stores} />
           </Scene>
         </Router>
       </Provider>

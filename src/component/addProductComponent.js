@@ -1,4 +1,58 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import firebase from 'firebase';
-import
+import { View, Text, TextInput, Picker } from 'react-native';
+import { connect } from 'react-redux'
+
+import { createProduct } from '../actionCreators/productActionCreators'
+
+class AddProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      price: '',
+      unit: ''
+    }
+  }
+
+  onSubmit() {
+    const {name, price, unit} = this.state;
+    this.props.onPressCreateProduct(this.state.name, this.state.price, this.state.unit)
+    console.log('onsubmit');
+  }
+
+  render() {
+    return (
+      <View style={{margin: 125}}>
+        <Text>Add a product below</Text>
+        <TextInput
+          style={{height: 40}}
+          placeholder="product name"
+          onChangeText={(name) => this.setState({name})}
+        />
+        <TextInput
+          style={{height: 40}}
+          placeholder="price per serving"
+          onChangeText={(price) => this.setState({price})}
+        />
+        <Picker
+          selectedValue={this.state.unit}
+          onValueChange={(unit) => this.setState({unit})} >
+          <Picker.Item label="oz" value="oz" />
+          <Picker.Item label="g" value="g" />
+          <Picker.Item label="lb" value="lb" />
+          <Picker.Item label="each" value="each" />
+        </Picker>
+        <Text onPress={this.onSubmit.bind(this)}>SUBMIT</Text>
+      </View>
+    )
+  }
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onPressCreateProduct: (name, price, unit) => dispatch(createProduct(name, price, unit))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddProduct)

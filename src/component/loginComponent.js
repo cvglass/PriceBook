@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import firebase from 'firebase';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux'
 
 export default class Login extends Component{
@@ -40,9 +39,3 @@ export default class Login extends Component{
     )
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onPressLoginUser: (email) => dispatch(loginUser(email))
-//   }
-// }
