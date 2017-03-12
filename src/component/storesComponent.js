@@ -9,16 +9,16 @@ class Stores extends Component {
     super(props);
   }
 
-  // componentWillMount(){
-  //   this.props.fetchStores()
-  // }
+  componentWillMount(){
+    this.props.onEnter()
+  }
 
   render() {
     console.log('props', this.props)
     return (
       <View style={{margin: 125}}>
         <ScrollView>
-          {[].map(store => {
+          {this.props.stores.map(store => {
             return (
               <Text key={store.name}>{store.name}</Text>
             )
@@ -31,9 +31,14 @@ class Stores extends Component {
 
 const mapStateToProps = state => {
   return {
-    stores: state.storesList
+    stores: state.storeReducer.storesList
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onEnter: () => dispatch(fetchStores())
+  }
+}
 
-export default connect(mapStateToProps, { fetchStores })(Stores)
+export default connect(mapStateToProps, mapDispatchToProps)(Stores)
