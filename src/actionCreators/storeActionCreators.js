@@ -3,10 +3,10 @@ import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import _ from 'lodash'
 
-export const setStore = (name) => {
+export const setStore = (store) => {
   return {
     type: CREATE_STORE,
-    store: name
+    store: store
   }
 }
 
@@ -15,7 +15,7 @@ export const createStore = (name) => {
   return (dispatch) => {
     firebase.database().ref(`stores/${currentUser.uid}`)
       .push({name})
-      .then(() => dispatch(setStore(name)))
+      // .then(() => dispatch(setStore(name)))
       .then(() => Actions.user())
       .catch(err => console.log(err))
   }
