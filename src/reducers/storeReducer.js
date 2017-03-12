@@ -12,9 +12,9 @@ export const storeReducer = (state = initialState, action) => {
       newState.store = action.store;
       break;
 
-      case GET_STORES:
-        newState.storesList = action.storesList;
-        break;
+    case GET_STORES:
+      newState.storesList = action.storesList;
+      break;
 
     default:
       return state;
