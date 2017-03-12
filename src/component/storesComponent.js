@@ -1,29 +1,41 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux'
 
-import { fetchStores } from '../actionCreators/storeActionCreators'
+import { fetchStores, setStore } from '../actionCreators/storeActionCreators'
 
 class Stores extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      store: ''
+    }
   }
 
   componentWillMount(){
     this.props.onEnter()
   }
 
+  onSubmit() {
+    const name = this.state.store
+    this.props.onPressStoreName(name);
+    Actions.addProduct()
+  }
+
   render() {
-    console.log('props', this.props)
     return (
       <View style={{margin: 125}}>
-        <ScrollView>
+        <Picker
+          selectedValue={this.state.store}
+          onValueChange={(store) => this.setState({store})}>
           {this.props.stores.map(store => {
             return (
-              <Text key={store.name}>{store.name}</Text>
+              <Picker.Item label={store.name} value={store.name} />
             )
           })}
-        </ScrollView>
+        </Picker>
+        <Text onPress={this.onSubmit.bind(this)}>SUBMIT</Text>
       </View>
     )
   }
@@ -37,7 +49,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onEnter: () => dispatch(fetchStores())
+    onEnter: () => dispatch(fetchStores()),
+    onPressStoreName: (name) => dispatch(setStore(name))
   }
 }
 
