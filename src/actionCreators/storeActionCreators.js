@@ -3,7 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import _ from 'lodash'
 
-const setStore = (name) => {
+export const setStore = (name) => {
   return {
     type: CREATE_STORE,
     store: name
@@ -31,14 +31,9 @@ const getStores = (list) => {
 export const fetchStores = () => {
   const { currentUser } = firebase.auth();
 
-  // return (dispatch, getState) => {
-  //   dispatch(getStores([{id: 1, name: 'blue'}]));
-  //   console.log('state', getState())
-  // }
-  return (dispatch, getState) => {
+  return (dispatch) => {
     firebase.database().ref(`stores/${currentUser.uid}`)
       .on('value', snap => {
-        const data = snap.val()
         let library = _.map(snap.val(), (val, id) => {
             return { ...val, id };
         });

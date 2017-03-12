@@ -17,10 +17,10 @@ class AddProduct extends Component {
   onSubmit() {
     const {name, price, unit} = this.state;
     this.props.onPressCreateProduct(this.state.name, this.state.price, this.state.unit)
-    console.log('onsubmit');
   }
 
   render() {
+    console.log('props', this.props)
     return (
       <View style={{margin: 125}}>
         <Text>Add a product below</Text>
@@ -49,10 +49,16 @@ class AddProduct extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+  return {
+    selectedStore: state.storeReducer.store
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onPressCreateProduct: (name, price, unit) => dispatch(createProduct(name, price, unit))
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(AddProduct)
