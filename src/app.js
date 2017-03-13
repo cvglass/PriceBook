@@ -12,7 +12,8 @@ import Signup from './component/signupComponent';
 import Login from './component/loginComponent';
 import AddProduct from './component/addProductComponent'
 import AddStore from './component/addStoreComponent';
-import Stores from './component/storesComponent'
+import Stores from './component/storesComponent';
+import Products from './component/productsComponent';
 
 export default class App extends Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ export default class App extends Component {
             <Scene key="addProduct" title="Add a product" component={AddProduct} />
             <Scene key="addStore" title="Add a store" component={AddStore} />
             <Scene key="stores" title="Your Stores" component={Stores} />
+            <Scene key="products" title="Your Products" component={Products} />
           </Scene>
         </Router>
       </Provider>
