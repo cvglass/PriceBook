@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
+import { fetchList } from '../actionCreators/productActionCreators'
+
 class ShoppingList extends Component {
+  componentWillMount() {
+    this.props.onEnter()
+  }
+
   render() {
     return (
-      <View style={{margin: 25}}>
+      <View style={{margin: 125}}>
         <ScrollView>
-          {this.props.shoppingList.map(list => {
+          {this.props.list.map(list => {
             return (
-            <Text>{list.name}</Text>
+              <Text>{list.product.id}</Text>
             )
           })}
         </ScrollView>
@@ -17,3 +23,17 @@ class ShoppingList extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    list: state.productReducer.shoppingList
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onEnter: () => dispatch(fetchList())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)

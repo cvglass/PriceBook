@@ -14,6 +14,7 @@ import AddProduct from './component/addProductComponent'
 import AddStore from './component/addStoreComponent';
 import Stores from './component/storesComponent';
 import Products from './component/productsComponent';
+import ShoppingList from './component/shoppingListComponent';
 
 export default class App extends Component {
   componentDidMount() {
@@ -36,8 +37,9 @@ export default class App extends Component {
             <Scene key="login" title="Login" component={Login} initial={true} />
             <Scene key="addProduct" title="Add a product" component={AddProduct} />
             <Scene key="addStore" title="Add a store" component={AddStore} />
-            <Scene key="stores" title="Your Stores" component={Stores} />
+            <Scene key="stores" title="Select a Store" component={Stores} />
             <Scene key="products" title="Your Products" component={Products} />
+            <Scene key="list" title="Your Shopping List" component={ShoppingList} />
           </Scene>
         </Router>
       </Provider>

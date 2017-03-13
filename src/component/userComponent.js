@@ -8,8 +8,9 @@ export default class User extends Component {
       <View style={{margin: 128}}>
         <Text>WELCOME!</Text>
         <Text onPress={Actions.addStore}>Add store</Text>
-        <Text onPress={Actions.stores}>View your stores</Text>
+        <Text onPress={Actions.stores}>Add a product to your inventory</Text>
         <Text onPress={Actions.products}>View your products</Text>
+        <Text onPress={Actions.list}>View your shopping list</Text>
       </View>
     )
   }

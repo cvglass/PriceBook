@@ -1,8 +1,9 @@
-import { CREATE_PRODUCT, GET_PRODUCTS } from '../constants';
+import { CREATE_PRODUCT, GET_PRODUCTS, GET_LIST } from '../constants';
 
 const initialState = {
   product: {},
-  productsList: []
+  productsList: [],
+  shoppingList: []
 }
 
 export const productReducer = (state = initialState, action) => {
@@ -14,6 +15,10 @@ export const productReducer = (state = initialState, action) => {
 
     case GET_PRODUCTS:
       newState.productsList = action.productsList;
+      break;
+
+    case GET_LIST:
+      newState.shoppingList = action.list;
       break;
 
     default:

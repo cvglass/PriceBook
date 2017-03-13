@@ -1,4 +1,4 @@
-import { CREATE_PRODUCT, GET_PRODUCTS, ADD_PRODUCT } from '../constants';
+import { CREATE_PRODUCT, GET_PRODUCTS, ADD_PRODUCT, GET_LIST } from '../constants';
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import _ from 'lodash';
@@ -61,4 +61,26 @@ export const addProductToList = (product) => {
       .push({product})
     .then(() => dispatch(addProduct(product)))
   }
+}
+
+export const setList = (list) => {
+  return {
+    type: GET_LIST,
+    list: list
+  }
+}
+
+export const fetchList = () => {
+  const {currentUser} = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`shoppingList/${currentUser.uid}`)
+      .on('value', snap => {
+        let library = _.map(snap.val(), (val, id) => {
+          return { ...val, id}
+        });
+        dispatch(setList(library))
+      })
+  }
+
 }
