@@ -14,6 +14,7 @@ class Products extends Component {
     this.props.onEnter()
   }
 
+
   render() {
     return (
       <View style={{margin: 25}}>
@@ -29,7 +30,7 @@ class Products extends Component {
             })
             return (
               <View style={{margin:50}}>
-                <Text onPress={this.props.add(product)}>{product.id} + </Text>
+                <Text onPress={() => this.props.add(product)}>{product.id} + </Text>
                 <Text>{stuff}</Text>
               </View>
             )

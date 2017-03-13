@@ -30,6 +30,7 @@ export default class Login extends Component{
         <TextInput
           style={{height: 40}}
           placeholder="password"
+          secureTextEntry={true}
           onChangeText={(password) => this.setState({password})}
         />
         <Text onPress={this.onSubmit.bind(this)}>SUBMIT</Text>
