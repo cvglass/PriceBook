@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Picker } from 'react-native';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux'
 
 import { createProduct } from '../actionCreators/productActionCreators'
 
@@ -16,7 +17,8 @@ class AddProduct extends Component {
 
   onSubmit() {
     const {name, price, unit} = this.state;
-    this.props.onPressCreateProduct(this.state.name, this.state.price, this.state.unit, this.props.selectedStore)
+    this.props.onPressCreateProduct(this.state.name, this.state.price, this.state.unit, this.props.selectedStore);
+    Actions.products();
   }
 
   render() {

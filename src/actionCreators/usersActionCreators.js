@@ -15,6 +15,6 @@ export const createUser = (name, email) => {
     firebase.database().ref(`users/${currentUser.uid}`)
       .set({name, email})
       .then(() => dispatch(setUser(name, email)))
-      .then(() => Actions.user());
+      .then(() => Actions.user())
   }
 }
